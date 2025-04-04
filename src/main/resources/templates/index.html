@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Koch Snowflake</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            margin-top: 5px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1>Koch Snowflake - Depth: <span th:text="${depth}"></span>, Edges: <span th:text="${edges}"></span></h1>
+
+<form method="get">
+    <div>
+        <label>
+            Depth:
+            <input type="number" name="depth" min="0" max="6" th:value="${depth}" />
+        </label>
+        <label>
+            Edges:
+            <input type="number" name="edges" min="3" max="12" th:value="${edges}" />
+        </label>
+    </div>
+    <button type="submit">Draw</button>
+</form>
+
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<script th:inline="javascript">
+    const segments = [[${segments}]];
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    for (let s of segments) {
+        ctx.moveTo(s.start.x, s.start.y);
+        ctx.lineTo(s.end.x, s.end.y);
+    }
+    ctx.stroke();
+</script>
+</body>
+</html>
