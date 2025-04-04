@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: koch-snowflake
+    env: static
+    buildCommand: ./mvnw clean install
+    startCommand: java -jar target/*.jar
+    buildFilter:
+      paths:
+        - src/**
+        - pom.xml
+    staticPublishPath: ""
