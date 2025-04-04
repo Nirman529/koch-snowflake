@@ -15,7 +15,9 @@ I was attending Professor Saty's class where we explored the Koch curve and its 
 - Powered by recursive geometry generation
 
 ## 📸 Preview
-![koch-preview](relative/path/to/image.png)
+
+![Koch Snowflake Preview](koch-preview.png)
+
 
 ## 📦 Technologies Used
 - Java 17
